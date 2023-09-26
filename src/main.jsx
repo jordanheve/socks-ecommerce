@@ -6,6 +6,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import { RouterProvider } from 'react-router-dom'
 import router from './router.jsx'
 import { ItemsProvider } from './context/ItemsProvider.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ItemsProvider>
     <RouterProvider router={router}/>

@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import useItems from '../hooks/useItems';
 export default function Navbar() {
+    const {currentCategory, setCurrentCategory} = useItems()
    const [category, setCategory] = useState([])
     const data = async() => {
         try {
@@ -26,8 +28,9 @@ export default function Navbar() {
     </header>
     <nav className='flex justify-center sticky bg-rose-600 text-white font-bold '>
         <div className=' flex gap-8 justify-center'>
+            <NavLink to="/home">Lo mas nuevo</NavLink>
         {category[0] !== null ? category.map (category => (
-                <NavLink key={category.id}>{category.attributes.Nombre}</NavLink>)
+                <NavLink key={category.id} to={'/'+category.attributes.Nombre}>{category.attributes.Nombre}</NavLink>)
             ) : "Cargando..."}
         </div>
        
