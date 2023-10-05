@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import useItems from '../hooks/useItems';
 export default function Navbar() {
-    const {currentCategory, setCurrentCategory} = useItems()
+    const {totalPrice} = useItems()
+    const {handleClickViewCart} = useItems()
    const [category, setCategory] = useState([])
     const data = async() => {
         try {
@@ -21,8 +22,8 @@ export default function Navbar() {
   return (
     <>
     <header className='bg-rose-200 h-12 flex place-content-between px-6 items-center'>
-        <h1 className='font-bold text-2xl text-rose-600'>PimpMyFeet</h1>
-        <button className='cursor-pointer'> 
+        <h1 className='font-bold text-2xl text-rose-600'>PimpMyFeet {totalPrice}</h1>
+        <button className='cursor-pointer' onClick={handleClickViewCart}> 
         <i className='bi bi-cart4 text-2xl text-rose-600'></i>
         </button>
     </header>
